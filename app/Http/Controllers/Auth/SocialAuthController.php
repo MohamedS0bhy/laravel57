@@ -58,7 +58,7 @@ class SocialAuthController extends Controller
 	    	$userProvider->user_id = $existUser->id;
 	    	$userProvider->save();
 	    }
-
+	    dd('here');
 	    if(Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]))
 	    	return redirect('/');
 	    else
