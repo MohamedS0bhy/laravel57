@@ -1,6 +1,6 @@
 <?php
 namespace App\Services;
-use App\Models\User;
+use App\User;
 use App\Models\LinkedSocialAccount;
 use Laravel\Socialite\Two\User as ProviderUser;
 class SocialAccountsService
