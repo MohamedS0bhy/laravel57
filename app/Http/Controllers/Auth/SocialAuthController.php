@@ -42,7 +42,6 @@ class SocialAuthController extends Controller
 	    if($userProvider){
 	    	$existUser = User::find($userProvider->user_id);
 	    }else{
-	    	dd('hhhh');
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
@@ -52,7 +51,7 @@ class SocialAuthController extends Controller
 	    		$existUser->password = bcrypt($user->getId());
 	    		$existUser->save();
 	    	}
-
+dd($existUser);
 	    	$userProvider = new SocialProvider();
 	    	$userProvider->provider_id = $user->getId();
 	    	$userProvider->provider_name = $provider;
