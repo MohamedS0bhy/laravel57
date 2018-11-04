@@ -45,9 +45,8 @@ class SocialAuthController extends Controller
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
-
 	    		$existUser = new User();
-	    		$existUser->username = $user->getName();
+	    		$existUser->name = $user->getName();
 	    		$existUser->email = $user->getEmail();
 	    		$existUser->password = bcrypt($user->getId());
 	    		$existUser->save();
