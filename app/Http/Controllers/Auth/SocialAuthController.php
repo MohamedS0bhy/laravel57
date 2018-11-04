@@ -38,12 +38,13 @@ class SocialAuthController extends Controller
 		// $user->getAvatar();
 
 	    $userProvider = SocialProvider::where('provider_id' , $user->getId())->first();
-	    
+
 	    if($userProvider){
 	    	$existUser = User::find($userProvider->user_id);
 	    }else{
+	    	dd('hhhh');
 	    	$existUser = User::where('email' , $user->getEmail())->first();
-	    	dd($existUser );
+	    	
 	    	if(!$existUser){
 	    		$existUser = new User();
 	    		$existUser->username = $user->getName();
