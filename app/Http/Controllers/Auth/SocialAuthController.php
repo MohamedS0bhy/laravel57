@@ -46,21 +46,21 @@ class SocialAuthController extends Controller
 	    	
 	    	if(!$existUser){
 
-	    		$newUser = new User();
-	    		$newUser->username = $user->getName();
-	    		$newUser->email = $user->getEmail();
-	    		$newUser->password = bcrypt($user->getId());
-	    		$newUser->save();
+	    		$existUser = new User();
+	    		$existUser->username = $user->getName();
+	    		$existUser->email = $user->getEmail();
+	    		$existUser->password = bcrypt($user->getId());
+	    		$existUser->save();
 	    	}
 
 	    	$userProvider = new SocialProvider();
 	    	$userProvider->provider_id = $user->getId();
 	    	$userProvider->provider_name = $provider;
-	    	$userProvider->user_id = ($newUser)? $newUser->id: $existUser->id;
+	    	$userProvider->user_id = $existUser->id;
 	    	$userProvider->save();
 	    }
-	    $email = ($newUser)? $newUser->email: $existUser->email;
-	    if(Auth::attempt(['email' => $email , 'password' => $user->getId()]))
+
+	    if(Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]))
 	    	return redirect('/');
 	    else
 	    	dd('failed');

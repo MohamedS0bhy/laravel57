@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\LinkedSocialAccount;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -18,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','provider_name','provider_id',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -30,8 +29,4 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function linkedSocialAccounts()
-    {
-        return $this->hasMany(LinkedSocialAccount::class);
-    }
 }
