@@ -20,7 +20,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('email/verify/{$email}' , 'HomeController@verifyMail');
+Route::get('email/verify/{email}' , 'HomeController@verifyMail');
 
 // social Authentication
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
