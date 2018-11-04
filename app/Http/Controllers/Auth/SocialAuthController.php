@@ -45,11 +45,12 @@ class SocialAuthController extends Controller
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
-	    		dd($existUser);
+
 	    		$existUser = new User();
 	    		$existUser->username = $user->getName();
 	    		$existUser->email = $user->getEmail();
 	    		$existUser->password = bcrypt($user->getId());
+	    		dd($existUser);
 	    		$existUser->save();
 	    	}
 
