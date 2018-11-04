@@ -10,7 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('sms/{phone}/{txt}' , 'SMSController@send_sms');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('email/verify/{$email}' , 'HomeController@verifyMail');
+
+// social Authentication
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
