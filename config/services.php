@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+    'client_id' => env('GITHUB_CLIENT_ID' , '536120023518452'),         // Your facebook Client ID
+    'client_secret' => env('GITHUB_CLIENT_SECRET' , 'cd36722b7d4bd51f37590fb3c520ca58'), // Your facebook Client Secret
+    'redirect' => 'https://laravel57.herokuapp.com/auth/facebook/callback',
+    ],
+
 ];
