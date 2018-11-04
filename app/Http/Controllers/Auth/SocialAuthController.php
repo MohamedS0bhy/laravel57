@@ -38,7 +38,7 @@ class SocialAuthController extends Controller
 		// $user->getAvatar();
 
 	    $userProvider = SocialProvider::where('provider_id' , $user->getId())->first();
-
+	    dd($user , $userProvider );
 	    if($userProvider){
 	    	$existUser = User::find($userProvider->user_id);
 	    }else{
@@ -58,7 +58,7 @@ class SocialAuthController extends Controller
 	    	$userProvider->user_id = $existUser->id;
 	    	$userProvider->save();
 	    }
-	    dd('here');
+
 	    if(Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]))
 	    	return redirect('/');
 	    else
