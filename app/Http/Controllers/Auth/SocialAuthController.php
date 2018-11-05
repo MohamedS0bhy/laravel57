@@ -39,9 +39,11 @@ class SocialAuthController extends Controller
   //           'first_name', 'last_name', 'email', 'gender', 'birthday'
   //       ])->user();
   //       dd($facebook_user);
-		
-	    $user = Socialite::driver($provider_name)->stateless()->user();
-	    dd($user);
+		if($provider_name == 'google')
+	    	$user = Socialite::driver($provider_name)->stateless()->user();
+	    else
+	    	$user = Socialite::driver($provider_name)->user();
+	    
 	    // All Providers
 		// $user->getId();
 		// $user->getNickname();
