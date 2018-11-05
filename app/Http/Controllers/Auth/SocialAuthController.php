@@ -62,7 +62,7 @@ class SocialAuthController extends Controller
 
 	    $attempt = Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]);
     	
-    	return redirect('/');
+    	return redirect('/home');
 
 	}
 }
