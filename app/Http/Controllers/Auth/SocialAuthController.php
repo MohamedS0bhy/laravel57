@@ -39,7 +39,7 @@ class SocialAuthController extends Controller
   //       ])->user();
   //       dd($facebook_user);
 	    $user = Socialite::driver($provider_name)->user();
-	    dd($user);
+	    
 	    // All Providers
 		// $user->getId();
 		// $user->getNickname();
