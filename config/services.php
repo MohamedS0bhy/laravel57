@@ -50,6 +50,6 @@ return [
     'google' => [
         'client_id'     => env('GOOGLE_CLIENT_ID' ,'331479771764-vfbfbrc9joj21at2n54n3nl9dbsnbuor.apps.googleusercontent.com'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET' , '8k_GEZlqhWAwhsydpue6sQHR'),
-        'redirect'      => env('https://laravel57.herokuapp.com/auth/google/callback')
+        'redirect'      => 'https://laravel57.herokuapp.com/auth/google/callback'
     ],
 ];
