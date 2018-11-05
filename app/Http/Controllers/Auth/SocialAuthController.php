@@ -8,6 +8,7 @@ use Socialite;
 use App\Models\SocialProvider;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+
 class SocialAuthController extends Controller
 {
 	/**
@@ -59,9 +60,9 @@ class SocialAuthController extends Controller
 	    	$userProvider->save();
 	    }
 
-	    if(Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]))
-	    	return redirect('/');
-	    else
-	    	dd('failed');
+	    $attempt = Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]);
+    	
+    	return redirect('/');
+
 	}
 }

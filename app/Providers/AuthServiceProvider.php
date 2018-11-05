@@ -3,9 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use App\Services\SocialUserResolver;
-use Hivokas\LaravelPassportSocialGrant\Resolvers\SocialUserResolverInterface;
-use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -20,15 +17,6 @@ class AuthServiceProvider extends ServiceProvider
     ];
 
     /**
-     * All of the container bindings that should be registered.
-     *
-     * @var array
-     */
-    public $bindings = [
-        SocialUserResolverInterface::class => SocialUserResolver::class,
-    ];
-
-    /**
      * Register any authentication / authorization services.
      *
      * @return void
@@ -37,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        //
     }
 }
