@@ -14,7 +14,7 @@ use App\Mail\LoginMail;
 Route::get('/', function () {
     // send an email to "batman@batcave.io"
     // Mail::to('mid90120@gmail.com')->send(new LoginMail);
-    Mail::to('mid90120@gmail.com')->queue(new LoginMail);
+    // Mail::to('mid90120@gmail.com')->queue(new LoginMail);
 
     return view('welcome');
 });
