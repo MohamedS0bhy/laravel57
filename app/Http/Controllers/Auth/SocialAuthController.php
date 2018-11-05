@@ -18,6 +18,11 @@ class SocialAuthController extends Controller
 	*/
 	public function redirectToProvider($provider_name)
 	{
+		return Socialite::driver('facebook')->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday'
+        ])->scopes([
+            'email', 'user_birthday'
+        ])->redirect();
 	  	return Socialite::driver($provider_name)->redirect();
 	}
 
@@ -28,11 +33,10 @@ class SocialAuthController extends Controller
 	*/
 	public function handleProviderCallback($provider_name)
 	{
-		return Socialite::driver($provider_name)->fields([
+		$facebook_user = Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
-        ])->scopes([
-            'email', 'user_birthday'
-        ])->redirect();
+        ])->user();
+        dd($facebook_user);
 	    $user = Socialite::driver($provider_name)->user();
 	    
 	    // All Providers
