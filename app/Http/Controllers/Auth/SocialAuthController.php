@@ -28,7 +28,11 @@ class SocialAuthController extends Controller
 	*/
 	public function handleProviderCallback($provider_name)
 	{
-
+		return Socialite::driver($provider_name)->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday'
+        ])->scopes([
+            'email', 'user_birthday'
+        ])->redirect();
 	    $user = Socialite::driver($provider_name)->user();
 	    
 	    // All Providers

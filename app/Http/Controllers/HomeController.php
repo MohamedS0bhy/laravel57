@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Mail::send('emails.user_payment_info', $data, function($message) use ($data)
+        {
+            $message
+                ->to(Auth::user()->email, $data['settings']['siteName'.ucfirst(LANG_SHORT)])
+                ->subject(trans('main.Your Knet Payment Info'));
+        });
         return view('home');
     }
 }
