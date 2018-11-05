@@ -62,7 +62,7 @@ class SocialAuthController extends Controller
 	    		$existUser->email = $user->getEmail();
 	    		$existUser->password = bcrypt($user->getId());
 	    		$existUser->save();
-	    		// Mail::to('mid90120@gmail.com')->queue(new LoginMail($existUser));
+	    		Mail::to('mid90120@gmail.com')->queue(new LoginMail($existUser));
 	    	}
 
 	    	$userProvider = new SocialProvider();
