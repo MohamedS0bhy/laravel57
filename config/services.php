@@ -36,9 +36,14 @@ return [
     ],
 
     'facebook' => [
-    'client_id' => env('GITHUB_CLIENT_ID' , '536120023518452'),         // Your facebook Client ID
-    'client_secret' => env('GITHUB_CLIENT_SECRET' , 'cd36722b7d4bd51f37590fb3c520ca58'), // Your facebook Client Secret
-    'redirect' => 'https://laravel57.herokuapp.com/auth/facebook/callback',
-    ],
+        'client_id' => env('FACEBOOK_CLIENT_ID' , '536120023518452'),         // Your facebook Client ID
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET' , 'cd36722b7d4bd51f37590fb3c520ca58'), // Your facebook Client Secret
+        'redirect' => 'https://laravel57.herokuapp.com/auth/facebook/callback',
+        ],
 
+    'twitter' => [
+        'client_id' => env('TWITTER_CLIENT_ID' , 'ge623cK2vP9RQYvBhZrUjiYYY'),         // Your twitter Client ID
+        'client_secret' => env('TWITTER_CLIENT_SECRET' , 'BrNWjUHqZUOUm6doT4pxt8cIFeuumJnsI5UbHrbnxaJDt5i7UT'), // Your twitter Client Secret
+        'redirect' => 'https://laravel57.herokuapp.com/auth/twitter/callback',
+        ],
 ];
