@@ -15,7 +15,7 @@ class CreateSocialProvidersTable extends Migration
     {
         Schema::create('social_providers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('provider_id');
+            $table->longText('provider_id');
             $table->string('provider_name');
             $table->unsignedInteger('user_id');
             $table->timestamps();
