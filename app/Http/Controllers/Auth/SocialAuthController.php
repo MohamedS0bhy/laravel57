@@ -41,7 +41,7 @@ class SocialAuthController extends Controller
   //       dd($facebook_user);
 		
 	    $user = Socialite::driver($provider_name)->user();
-	    
+	    dd($user);
 	    // All Providers
 		// $user->getId();
 		// $user->getNickname();
@@ -57,12 +57,13 @@ class SocialAuthController extends Controller
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
+	    		$pass = randomkey(15);
 	    		$existUser = new User();
 	    		$existUser->name = $user->getName();
 	    		$existUser->email = $user->getEmail();
-	    		$existUser->password = bcrypt($user->getId());
+	    		$existUser->password = bcrypt($pass);
 	    		$existUser->save();
-	    		Mail::to('mid90120@gmail.com')->queue(new LoginMail($existUser));
+	    		Mail::to('mid90120@gmail.com')->queue(new LoginMail($pass));
 	    	}
 
 	    	$userProvider = new SocialProvider();
@@ -77,4 +78,15 @@ class SocialAuthController extends Controller
     	return redirect('/home');
 
 	}
+
+   public function randomkey($length = 64)
+    {
+        $string = "";
+        $characters = "1234567890abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // change to whatever characters you want
+        while ($length > 0) {
+            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
+            $length -= 1;
+        }
+        return $string;
+    }
 }

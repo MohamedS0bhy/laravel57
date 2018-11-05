@@ -16,15 +16,15 @@ class LoginMail extends Mailable
     public $name = "Mohamed Sobhy";
     public $address = "address@mail.com";
     public $subject = "this is subject";
-    public $user;
+    public $pass;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($pass)
     {
-        $this->user = $user;
+        $this->pass = $pass;
     }
 
     /**
