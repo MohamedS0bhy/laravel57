@@ -39,6 +39,7 @@ class SocialAuthController extends Controller
   //           'first_name', 'last_name', 'email', 'gender', 'birthday'
   //       ])->user();
   //       dd($facebook_user);
+		try{
 	    $user = Socialite::driver($provider_name)->user();
 	    
 	    // All Providers
@@ -74,6 +75,10 @@ class SocialAuthController extends Controller
 	    $attempt = Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]);
     	
     	return redirect('/home');
+		}catch(Exception $e){
+			 echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
+
 
 	}
 }
