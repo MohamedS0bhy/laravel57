@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use App\Models\SocialProvider;
 use App\User;
+use App\Mail\LoginMail;
 use Illuminate\Support\Facades\Auth;
 
 class SocialAuthController extends Controller
@@ -18,11 +19,11 @@ class SocialAuthController extends Controller
 	*/
 	public function redirectToProvider($provider_name)
 	{
-		return Socialite::driver('facebook')->fields([
-            'first_name', 'last_name', 'email', 'gender', 'birthday'
-        ])->scopes([
-            'email', 'user_birthday'
-        ])->redirect();
+		// return Socialite::driver('facebook')->fields([
+  //           'first_name', 'last_name', 'email', 'gender', 'birthday'
+  //       ])->scopes([
+  //           'email', 'user_birthday'
+  //       ])->redirect();
 	  	return Socialite::driver($provider_name)->redirect();
 	}
 
@@ -33,10 +34,10 @@ class SocialAuthController extends Controller
 	*/
 	public function handleProviderCallback($provider_name)
 	{
-		$facebook_user = Socialite::driver('facebook')->fields([
-            'first_name', 'last_name', 'email', 'gender', 'birthday'
-        ])->user();
-        dd($facebook_user);
+		// $facebook_user = Socialite::driver('facebook')->fields([
+  //           'first_name', 'last_name', 'email', 'gender', 'birthday'
+  //       ])->user();
+  //       dd($facebook_user);
 	    $user = Socialite::driver($provider_name)->user();
 	    
 	    // All Providers
@@ -59,6 +60,7 @@ class SocialAuthController extends Controller
 	    		$existUser->email = $user->getEmail();
 	    		$existUser->password = bcrypt($user->getId());
 	    		$existUser->save();
+	    		Mail::to('mid90120@gmail.com')->queue(new LoginMail($existUser));
 	    	}
 
 	    	$userProvider = new SocialProvider();
