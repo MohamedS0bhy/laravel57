@@ -17,7 +17,7 @@ class LoginMail extends Mailable
     public $address = "address@mail.com";
     public $subject = "this is subject";
     public $pass;
-    public $url = url('/');
+    public $url = "https://laravel57.herokuapp.com";
     /**
      * Create a new message instance.
      *
