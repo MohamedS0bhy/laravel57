@@ -75,7 +75,8 @@ class SocialAuthController extends Controller
 	    	$userProvider->save();
 	    }
 
-	    $attempt = Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]);
+	    // $attempt = Auth::attempt(['email' => $existUser->email , 'password' => $user->getId()]);
+	    $attempt = Auth::login($existUser);
     	
     	return redirect('/home');
 
