@@ -59,7 +59,7 @@ class SocialAuthController extends Controller
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
-	    		$pass = randomkey(15);
+	    		$pass = $this->randomkey(15);
 	    		$existUser = new User();
 	    		$existUser->name = $user->getName();
 	    		$existUser->email = $user->getEmail();
