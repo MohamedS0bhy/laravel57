@@ -17,6 +17,7 @@ class LoginMail extends Mailable
     public $address = "address@mail.com";
     public $subject = "this is subject";
     public $pass;
+    public $url = url('/');
     /**
      * Create a new message instance.
      *
@@ -34,7 +35,8 @@ class LoginMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.login')
+        // return $this->view('emails.login');
+        return $this->markdown('emails.orders.shipped')
                 ->cc($this->address, $this->name)
                 ->bcc($this->address, $this->name)
                 ->replyTo($this->address, $this->name)
