@@ -1,5 +1,6 @@
 <?php
 use App\Mail\LoginMail;
+use App\Http\Controllers\HelperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,8 @@ Route::get('/', function () {
     // send an email to "batman@batcave.io"
     // Mail::to('mid90120@gmail.com')->send(new LoginMail);
     // Mail::to('mid90120@gmail.com')->queue(new LoginMail);
-
+    return str_random(32);
+	return HelperController::randomkey(15);
     return view('welcome');
 });
 

@@ -10,6 +10,7 @@ use App\Models\SocialProvider;
 use App\User;
 use App\Mail\LoginMail;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HelperController;
 
 class SocialAuthController extends Controller
 {
@@ -59,7 +60,7 @@ class SocialAuthController extends Controller
 	    	$existUser = User::where('email' , $user->getEmail())->first();
 	    	
 	    	if(!$existUser){
-	    		$pass = $this->randomkey(15);
+	    		$pass = str_random(32);
 	    		$existUser = new User();
 	    		$existUser->name = $user->getName();
 	    		$existUser->email = $user->getEmail();
@@ -82,14 +83,5 @@ class SocialAuthController extends Controller
 
 	}
 
-   public function randomkey($length = 64)
-    {
-        $string = "";
-        $characters = "1234567890abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // change to whatever characters you want
-        while ($length > 0) {
-            $string .= $characters[mt_rand(0, strlen($characters) - 1)];
-            $length -= 1;
-        }
-        return $string;
-    }
+
 }

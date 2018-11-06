@@ -1,7 +1,7 @@
 @component('mail::message')
-# Introduction
+# Registration
 
-The body of your message.
+Your new password is : $pass
 
 @component('mail::button', ['url' => $url])
 Button Text
