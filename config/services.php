@@ -42,8 +42,8 @@ return [
         ],
 
     'twitter' => [
-        'client_id' => env('TWITTER_CLIENT_ID' , 'ge623cK2vP9RQYvBhZrUjiYYY'),         // Your twitter Client ID
-        'client_secret' => env('TWITTER_CLIENT_SECRET' , 'BrNWjUHqZUOUm6doT4pxt8cIFeuumJnsI5UbHrbnxaJDt5i7UT'), // Your twitter Client Secret
+        'client_id' => env('TWITTER_CLIENT_ID' , 'jUaEK0gqT9vkmnFeoI29NQ0Fs'),         // Your twitter Client ID
+        'client_secret' => env('TWITTER_CLIENT_SECRET' , 'YSwJhWZoAANATX2xY17h6Ln6iKO17GyyWeQlYFwkr6dcUrcpum'), // Your twitter Client Secret
         'redirect' => 'https://laravel57.herokuapp.com/auth/twitter/callback',
         ],
 
